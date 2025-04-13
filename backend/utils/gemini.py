@@ -139,10 +139,7 @@ def generate_response(query: str, old_messages: List[Dict[str, Any]]):
     formatted_messages.append({"role": "user", "parts": [{"text": query}]})
 
     try:
-        api_key = (
-            os.environ.get("GEMINI_API_KEY")
-            or "AIzaSyCslKgJDAckdMD34arTHWJ8fSHB0ERFTmA"  # Replace with your default key
-        )
+        api_key = os.environ.get("_GEMINI_API_KEY")
 
         client = genai.Client(api_key=api_key)
         config = types.GenerateContentConfig(
@@ -181,11 +178,7 @@ def extract_news_context(news_results: dict[str, Any]) -> str:
     Returns:
         Extracted context as a string
     """
-    if (
-        not news_results
-        or "articles" not in news_results
-        or not news_results["articles"]
-    ):
+    if not news_results or "articles" not in news_results or not news_results["articles"]:
         return ""
 
     context = ""
@@ -229,11 +222,7 @@ def generate_chat_title(query: str) -> str:
     """
     try:
         # Get API key from environment or settings
-        api_key = (
-            os.environ.get("GEMINI_API_KEY")
-            or current_app.config.get("GEMINI_API_KEY")
-            or "AIzaSyCslKgJDAckdMD34arTHWJ8fSHB0ERFTmA"  # Replace with your default key
-        )
+        api_key = os.environ.get("_GEMINI_API_KEY") or current_app.config.get("_GEMINI_API_KEY")
         client = genai.Client(api_key=api_key)
 
         # Search for news related to the query
