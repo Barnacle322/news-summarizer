@@ -6,5 +6,60 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "flask>=3.1.0",
+    "flask-cors>=5.0.1",
     "flask-sqlalchemy>=3.1.1",
+    "google-genai>=1.10.0",
+    "feedparser>=6.0.10",
+    "beautifulsoup4>=4.12.2",
+    "requests>=2.31.0",
+    "apscheduler>=3.10.1",
 ]
+
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    ".venv",
+    ".old_venv",
+    "migrations",
+    "instance",
+    "typesense-stubs",
+]
+
+# Same as Black.
+line-length = 120
+indent-width = 4
+
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "Q", "I", "N", "UP"]
+ignore = ["E501"]
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

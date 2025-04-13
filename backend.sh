@@ -8,5 +8,10 @@ then
   set +a # stop automatically exporting variables
 fi
 
+pip3 install uv
+cd backend
+uv venv
 source .venv/bin/activate
-flask run --port=5000
+uv sync --active
+
+flask run
